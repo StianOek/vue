@@ -33,8 +33,8 @@ const handleRaceChange = (event: Event) => {
   </section>
 
   <section class="my-4">
-    <select @click="handleRaceChange" class="border border-slate-200 py-2 mb-4 cursor-pointer">
-      <option value="">All Races</option>
+    <select @change="handleRaceChange" class="border border-slate-200 mb-4 cursor-pointer">
+      <option value="All races">All Races</option>
       <option v-for="race in characterList" :key="race.id" :value="race.race">{{ race.race }}</option>
     </select>
   </section>

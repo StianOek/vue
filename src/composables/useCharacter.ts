@@ -21,12 +21,7 @@ const fetchCharacters = async () => {
 };
 
 const addCharacter = async (newCharacter: Character) => {
-  const add = await axios.post("http://localhost:3001/characters", newCharacter);
-  if (add.status === 201) {
-    characterList.value.push(newCharacter);
-  } else {
-    console.error("Failed to add character:", add.statusText);
-  }
+  await axios.post("http://localhost:3001/characters", newCharacter);
 };
 
 export function useCharacters() {
