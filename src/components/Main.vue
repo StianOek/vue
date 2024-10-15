@@ -22,5 +22,5 @@ onMounted(async () => {
 </script>
 
 <template>
-  <h1>Case</h1>
+  <h1 class="text-blue-400">Case</h1>
 </template>
