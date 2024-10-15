@@ -1,7 +1,11 @@
 <script setup lang="ts">
-import Main from "./components/Main.vue";
+import { RouterView } from "vue-router";
+import Navbar from "./components/Navbar.vue";
 </script>
 
 <template>
-  <Main />
+  <Navbar />
+  <main class="max-w-6xl w-full m-auto">
+    <RouterView />
+  </main>
 </template>
