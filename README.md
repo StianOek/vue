@@ -4,4 +4,15 @@ This template should help get you started developing with Vue 3 and TypeScript i
 
 Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
 
-- [] Søk på en property
+## Man skal kunne gjøre følgende operasjoner:
+
+- [ ] Søk på en property
+- [ ] Filtrere ulike properties
+- [ ] Sortere på dato
+- [ ] Mulighet til å lage en ny linje
+- [x] Legg ut på git
+
+## Bonus
+
+- [ ] Oppdatere et felt
+- [ ] Åpne en linje for å se detaljer
