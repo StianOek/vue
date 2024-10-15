@@ -6,10 +6,10 @@ Learn more about the recommended Project Setup and IDE Support in the [Vue Docs 
 
 ## Man skal kunne gjøre følgende operasjoner:
 
-- [ ] Søk på en property
+- [x] Søk på en property
 - [ ] Filtrere ulike properties
 - [ ] Sortere på dato
-- [ ] Mulighet til å lage en ny linje
+- [x] Mulighet til å lage en ny linje
 - [x] Legg ut på git
 
 ## Bonus
