@@ -3,8 +3,13 @@ import { ref } from "vue";
 
 import { Character } from "../types";
 import { useCharacters } from "../composables/useCharacter";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 const { addCharacter } = useCharacters();
+
+const races = ref(["Half-Elf", "Human", "Dwarf", "Tiefling", "Elf", "Half-Orc", "Halfling"]);
 
 const newCharacter = ref<Character>({
   id: "",
@@ -24,6 +29,8 @@ const handleSubmit = () => {
     newCharacter.value.name = "";
     newCharacter.value.race = "";
     newCharacter.value.level = 1;
+
+    router.push("/");
   }
 };
 </script>
@@ -45,13 +52,15 @@ const handleSubmit = () => {
 
     <div class="mb-4">
       <label for="race" class="block text-gray-700 text-sm font-bold mb-2">Race:</label>
-      <input
+      <select
         v-model="newCharacter.race"
-        type="text"
         id="race"
         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         required
-      />
+      >
+        <option value="" disabled>Select a race</option>
+        <option v-for="race in races" :key="race" :value="race">{{ race }}</option>
+      </select>
     </div>
 
     <div class="mb-4">

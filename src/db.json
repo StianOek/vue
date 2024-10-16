@@ -1,52 +1,12 @@
 {
   "characters": [
     {
-      "id": "1",
-      "name": "Aria",
-      "race": "Half-Elf",
-      "className": "Rogue",
-      "level": 5,
-      "createdAt": "2021-09-01"
-    },
-    {
-      "id": "2",
-      "name": "Marcus",
-      "race": "Human",
-      "className": "Paladin",
-      "level": 1,
-      "createdAt": "2021-09-15"
-    },
-    {
-      "id": "3",
-      "name": "Tessa",
-      "race": "Dwarf",
-      "className": "Bard",
-      "level": 8,
-      "createdAt": "2021-09-22"
-    },
-    {
-      "id": "4",
-      "name": "Erik",
-      "race": "Dwarf",
-      "className": "Barbarian",
-      "level": 3,
-      "createdAt": "2021-10-01"
-    },
-    {
       "id": "5",
       "name": "Lila",
       "race": "Tiefling",
       "className": "Warlock",
       "level": 7,
       "createdAt": "2021-10-07"
-    },
-    {
-      "id": "6",
-      "name": "Niamh",
-      "race": "Elf",
-      "className": "Ranger",
-      "level": 2,
-      "createdAt": "2021-10-15"
     },
     {
       "id": "7",
@@ -57,35 +17,35 @@
       "createdAt": "2021-10-23"
     },
     {
-      "id": "8",
-      "name": "Ava",
-      "race": "Halfling",
-      "className": "Cleric",
-      "level": 4,
-      "createdAt": "2021-11-01"
-    },
-    {
-      "id": "uq1vnn0u0",
-      "name": "test",
-      "race": "32234",
-      "level": 1,
-      "createdAt": "2024-10-15T21:42:51.490Z",
+      "id": "wz92a1mr1",
+      "name": "Dorg",
+      "race": "Tiefling",
+      "level": 12,
+      "createdAt": "2024-10-16T20:31:02.837Z",
       "className": ""
     },
     {
-      "id": "8fymn6964",
-      "name": "Yolo",
+      "id": "c4zo5884e",
+      "name": "Test",
+      "race": "Dwarf",
+      "level": 1,
+      "createdAt": "2024-10-16T20:39:57.257Z",
+      "className": ""
+    },
+    {
+      "id": "3m59d88uz",
+      "name": "Stian",
       "race": "Human",
-      "level": 44,
-      "createdAt": "2024-10-15T21:44:01.851Z",
+      "level": 1,
+      "createdAt": "2024-10-16T20:42:28.665Z",
       "className": ""
     },
     {
-      "id": "6vdgecc4v",
-      "name": "elamela",
-      "race": "4234",
-      "level": 1,
-      "createdAt": "2024-10-15T21:49:43.173Z",
+      "id": "pocdj8m73",
+      "name": "Elam",
+      "race": "Elf",
+      "level": 11123,
+      "createdAt": "2024-10-16T20:42:36.376Z",
       "className": ""
     }
   ]

@@ -24,10 +24,15 @@ const addCharacter = async (newCharacter: Character) => {
   await axios.post("http://localhost:3001/characters", newCharacter);
 };
 
+const deleteCharacter = async (id: string) => {
+  await axios.delete(`http://localhost:3001/characters/${id}`);
+};
+
 export function useCharacters() {
   return {
     characterList,
     fetchCharacters,
     addCharacter,
+    deleteCharacter,
   };
 }

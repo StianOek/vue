@@ -3,11 +3,12 @@ import { onMounted, ref } from "vue";
 import { useCharacters } from "../composables/useCharacter";
 import { Characters } from "../types";
 
-const { characterList, fetchCharacters } = useCharacters();
+const { characterList, fetchCharacters, deleteCharacter } = useCharacters();
 
 // Lageer en ny ref for filtrerte karakterer slik at jeg kan filtrere uten å endre originalen
 const filteredCharacters = ref<Characters>([]);
 const selectedRace = ref("");
+const races = ref(["Half-Elf", "Human", "Dwarf", "Tiefling", "Elf", "Half-Orc", "Halfling"]);
 onMounted(async () => {
   await fetchCharacters();
   filteredCharacters.value = characterList.value; // Her setter jeg kopi listen "filteredCharacters" med orginal data fra "characterList"
@@ -22,7 +23,20 @@ const handleSearch = (event: Event) => {
 
 const handleRaceChange = (event: Event) => {
   selectedRace.value = (event.target as HTMLSelectElement).value;
-  filteredCharacters.value = characterList.value.filter((character) => character.race.toLowerCase().includes(selectedRace.value.toLowerCase()));
+
+  if (selectedRace.value === "All races") {
+    // Hvis All races er valgt, vis alle karakterene
+    filteredCharacters.value = characterList.value;
+  } else {
+    // Filtrerer basert på rase uten å endre orginalen "characterList"
+    filteredCharacters.value = characterList.value.filter((character) => character.race.toLowerCase() === selectedRace.value.toLowerCase());
+  }
+};
+
+const handleDelete = async (characterId: string) => {
+  await deleteCharacter(characterId); // kalle på deleteCharacter funksjonen
+  await fetchCharacters(); // refetch karakterene etter sletting
+  filteredCharacters.value = characterList.value; // oppdaterer listen med orginalen
 };
 </script>
 
@@ -35,7 +49,7 @@ const handleRaceChange = (event: Event) => {
   <section class="my-4">
     <select @change="handleRaceChange" class="border border-slate-200 mb-4 cursor-pointer">
       <option value="All races">All Races</option>
-      <option v-for="race in characterList" :key="race.id" :value="race.race">{{ race.race }}</option>
+      <option v-for="race in races" :key="race" :value="race">{{ race }}</option>
     </select>
   </section>
 
@@ -48,10 +62,7 @@ const handleRaceChange = (event: Event) => {
       <p class="text-gray-600"><strong>Name:</strong> {{ character.name }}</p>
       <p class="text-gray-600"><strong>Race:</strong> {{ character.race }}</p>
       <p class="text-gray-600"><strong>Level:</strong> {{ character.level }}</p>
+      <button class="bg-slate-800 hover:bg-slate-600 text-white px-4 py-1 rounded text-sm" @click="handleDelete(character.id)">delete</button>
     </div>
   </div>
 </template>
-
-<style scoped>
-/* You can add custom styles here if needed */
-</style>
