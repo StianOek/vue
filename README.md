@@ -8,11 +8,11 @@ Learn more about the recommended Project Setup and IDE Support in the [Vue Docs 
 
 - [x] Søk på en property
 - [ ] Filtrere ulike properties
-- [ ] Sortere på dato
+- [x] Sortere på dato
 - [x] Mulighet til å lage en ny linje
 - [x] Legg ut på git
 
 ## Bonus
 
-- [ ] Oppdatere et felt
-- [ ] Åpne en linje for å se detaljer
+- [x] Oppdatere et felt
+- [x] Åpne en linje for å se detaljer
