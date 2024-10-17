@@ -5,7 +5,7 @@ import Navbar from "./components/Navbar.vue";
 
 <template>
   <Navbar />
-  <main class="max-w-6xl w-full m-auto" :style="{ height: `calc(100vh - 100px)` }">
+  <main class="max-w-6xl w-full m-auto mt-40" :style="{ height: `calc(100vh - 160px)` }">
     <RouterView />
   </main>
 </template>

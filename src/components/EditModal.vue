@@ -20,9 +20,11 @@ const closeModal = () => {
 const handleUpdateCharacter = () => {
   emit("updateCharacter", localCharacter.value);
 };
+
+console.log();
 </script>
 
-<template>
+<template v-if="props.isModalOpen">
   <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
     <div class="bg-white p-6 rounded shadow-md max-w-lg w-full">
       <h2 class="text-2xl font-bold mb-4">Update Character</h2>
@@ -30,12 +32,17 @@ const handleUpdateCharacter = () => {
       <form @submit.prevent="handleUpdateCharacter">
         <div class="mb-4">
           <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
-          <input v-model="characterToUpdate.name" id="name" type="text" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm" />
+          <input
+            v-model="props.characterToUpdate.name"
+            id="name"
+            type="text"
+            class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm"
+          />
         </div>
 
         <div class="mb-4">
           <label for="race" class="block text-sm font-medium text-gray-700">Race</label>
-          <select v-model="characterToUpdate.race" id="race" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm">
+          <select v-model="props.characterToUpdate.race" id="race" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm">
             <option v-for="race in races" :key="race" :value="race">{{ race }}</option>
           </select>
         </div>
@@ -43,7 +50,7 @@ const handleUpdateCharacter = () => {
         <div class="mb-4">
           <label for="level" class="block text-sm font-medium text-gray-700">Level</label>
           <input
-            v-model.number="characterToUpdate.level"
+            v-model.number="props.characterToUpdate.level"
             id="level"
             type="number"
             min="1"

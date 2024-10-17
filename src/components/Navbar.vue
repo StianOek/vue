@@ -4,6 +4,7 @@ import { Links } from "../types";
 import { RouterLink, useRoute } from "vue-router";
 
 const links = ref<Links>([
+  { name: "Home", path: "/" },
   { name: "Characters", path: "/characters/list" },
   { name: "Create Character", path: "/character/new" },
 ]);
@@ -16,9 +17,9 @@ const activeLink = (path: string) => {
 </script>
 
 <template>
-  <main class="">
-    <nav class="max-w-6xl w-full m-auto flex justify-between items-center h-20">
-      <RouterLink to="/" class="relative text-white transition-all duration-300 ease-in-out hover:text-emerald-300"> Case </RouterLink>
+  <main class="fixed top-0 w-full bg-[#4d5156] bg-opacity-80 backdrop-blur-lg z-50">
+    <nav class="max-w-6xl m-auto flex justify-between items-center h-20">
+      <RouterLink to="/" class="relative text-white transition-all duration-300 ease-in-out hover:text-emerald-300"> Case Dokflyt </RouterLink>
       <div class="flex items-center gap-10">
         <button class="text-white relative" v-for="link in links" :key="link.path">
           <RouterLink

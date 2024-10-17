@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
+import { onMounted } from "vue";
 import { useCharacters } from "../composables/useCharacter";
-import { useRoute, useRouter } from "vue-router";
+import { useRoute } from "vue-router";
 import characterImage from "../assets/tier.jpg";
 
 const route = useRoute();
