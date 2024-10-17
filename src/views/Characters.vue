@@ -8,8 +8,12 @@ const { characterList, fetchCharacters, deleteCharacter, updateCharacter, charac
 
 // Lageer en ny ref for filtrerte karakterer slik at jeg kan filtrere uten å endre originalen
 const filteredCharacters = ref<Characters>([]);
+
 const selectedRace = ref("");
+const selectedClass = ref("");
+
 const races = ref(["Half-Elf", "Human", "Dwarf", "Tiefling", "Elf", "Half-Orc", "Halfling"]);
+const characterClasses = ref(["Fighter", "Warlock", "Rogue", "Barbarian", "Paladin", "Ranger", "Cleric"]);
 
 const isModalOpen = ref(false);
 const characterToUpdate = ref<Character>({
@@ -45,6 +49,18 @@ const handleRaceChange = (event: Event) => {
   }
 };
 
+const handleClassChange = (event: Event) => {
+  selectedClass.value = (event.target as HTMLSelectElement).value;
+
+  if (selectedClass.value === "All classes") {
+    // Hvis All races er valgt, vis alle karakterene
+    filteredCharacters.value = characterList.value;
+  } else {
+    // Filtrerer basert på rase uten å endre orginalen "characterList"
+    filteredCharacters.value = characterList.value.filter((character) => character.className.toLowerCase() === selectedClass.value.toLowerCase());
+  }
+};
+
 const handleDelete = async (characterId: string) => {
   await deleteCharacter(characterId);
   await fetchCharacters();
@@ -76,10 +92,14 @@ const handleUpdateCharacter = async () => {
     <input @input="handleSearch" class="border border-slate-200 p-4 w-full" type="search" placeholder="Search name" />
   </section>
 
-  <section class="my-4">
+  <section class="my-4 flex items-center gap-4">
     <select @change="handleRaceChange" class="border border-slate-200 mb-4 cursor-pointer">
       <option value="All races">All Races</option>
       <option v-for="race in races" :key="race" :value="race">{{ race }}</option>
+    </select>
+    <select @change="handleClassChange" class="border border-slate-200 mb-4 cursor-pointer">
+      <option value="All classes">All Classes</option>
+      <option v-for="characterClass in characterClasses" :key="characterClass" :value="characterClass">{{ characterClass }}</option>
     </select>
   </section>
 
@@ -89,12 +109,13 @@ const handleUpdateCharacter = async () => {
       :key="character.id"
       class="p-4 bg-[#4d5156] shadow-lg rounded-lg flex items-center justify-around cursor-pointer"
     >
-      <p class="text-white"><strong>Name:</strong> {{ character.name }}</p>
-      <p class="text-white"><strong>Race:</strong> {{ character.race }}</p>
-      <p class="text-white"><strong>Level:</strong> {{ character.level }}</p>
+      <p class="text-white w-40"><strong>Name:</strong> {{ character.name }}</p>
+      <p class="text-white w-40"><strong>Race:</strong> {{ character.race }}</p>
+      <p class="text-white w-40"><strong>Level:</strong> {{ character.level }}</p>
+      <p class="text-white w-40"><strong>Class:</strong> {{ character.className }}</p>
       <div class="flex gap-4">
-        <button class="bg-red-800 hover:bg-red-600 text-white px-4 py-1 rounded text-sm" @click="handleDelete(character.id)">delete</button>
-        <RouterLink :to="'/character/' + character.id" class="bg-slate-800 hover:bg-slate-600 text-white px-4 py-1 rounded text-sm"
+        <button class="bg-red-800 hover:bg-red-600 text-white px-4 py-1 rounded text-sm" @click="handleDelete(character.id)">Delete</button>
+        <RouterLink :to="'/character/' + character.id" class="bg-emerald-600 hover:bg-emerald-300 text-white px-4 py-1 rounded text-sm"
           >View character
         </RouterLink>
         <button class="bg-blue-500 hover:bg-blue-400 text-white px-4 py-1 rounded text-sm" @click="openUpdateModal(character)">Edit</button>

@@ -14,12 +14,12 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="h-full w-full flex items-center justify-center">
+  <div class="w-full flex items-center justify-center">
     <template v-if="isLoadingCharacter">
       <p>Loading...</p>
     </template>
     <template v-else-if="character">
-      <section class="bg-slate-800 shadow-xl rounded-md flex flex-col items-center w-full max-w-4xl">
+      <section class="bg-slate-800 shadow-xl rounded-md flex flex-col items-center w-full max-w-4xl h-1/2">
         <div class="flex justify-between w-full gap-4">
           <div class="flex-1 relative">
             <img :src="characterImage" alt="Character Image" class="w-full h-full object-cover shadow-md" />
