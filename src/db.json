@@ -9,44 +9,20 @@
       "createdAt": "2021-10-07"
     },
     {
-      "id": "7",
-      "name": "Tristan",
-      "race": "Half-Orc",
-      "className": "Fighter",
-      "level": 6,
-      "createdAt": "2021-10-23"
-    },
-    {
-      "id": "wz92a1mr1",
-      "name": "Dorg",
+      "id": "197558",
+      "name": "Hello",
       "race": "Tiefling",
-      "level": 12,
-      "createdAt": "2024-10-16T20:31:02.837Z",
-      "className": ""
-    },
-    {
-      "id": "c4zo5884e",
-      "name": "Test",
-      "race": "Dwarf",
       "level": 1,
-      "createdAt": "2024-10-16T20:39:57.257Z",
-      "className": ""
+      "createdAt": "2024-10-17T18:52:06.197Z",
+      "className": "Paladin"
     },
     {
-      "id": "3m59d88uz",
-      "name": "Stian",
-      "race": "Human",
+      "id": "89646",
+      "name": "Kajokok",
+      "race": "Halfling",
       "level": 1,
-      "createdAt": "2024-10-16T20:42:28.665Z",
-      "className": ""
-    },
-    {
-      "id": "pocdj8m73",
-      "name": "Elam",
-      "race": "Elf",
-      "level": 11123,
-      "createdAt": "2024-10-16T20:42:36.376Z",
-      "className": ""
+      "createdAt": "2024-10-17T20:28:47.862Z",
+      "className": "Barbarian"
     }
   ]
 }

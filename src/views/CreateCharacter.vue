@@ -5,11 +5,11 @@ import { Character } from "../types";
 import { useCharacters } from "../composables/useCharacter";
 import { useRouter } from "vue-router";
 
+const { addCharacter } = useCharacters();
 const router = useRouter();
 
-const { addCharacter } = useCharacters();
-
 const races = ref(["Half-Elf", "Human", "Dwarf", "Tiefling", "Elf", "Half-Orc", "Halfling"]);
+const characterClasses = ref(["Fighter", "Warlock", "Rogue", "Barbarian", "Paladin", "Ranger", "Cleric"]);
 
 const newCharacter = ref<Character>({
   id: "",
@@ -23,58 +23,60 @@ const newCharacter = ref<Character>({
 const handleSubmit = () => {
   // Sjekker om navn og rase er satt før vi legger til karakteren som en slags validering.
   if (newCharacter.value.name && newCharacter.value.race) {
-    newCharacter.value.id = Math.random().toString(36).substr(2, 9);
+    const randomId = Math.floor(Math.random() * 1000000); // Genererer et tilfeldig id mellom 0 og 1000000
+    newCharacter.value.id = randomId.toString();
     addCharacter({ ...newCharacter.value });
 
     newCharacter.value.name = "";
     newCharacter.value.race = "";
     newCharacter.value.level = 1;
-
-    router.push("/");
+    router.push("/characters/list");
   }
 };
 </script>
 
 <template>
-  <h1 class="text-4xl font-bold text-slate-700 my-4">Create Character</h1>
+  <h1 class="text-4xl font-bold text-white my-4">Create Character</h1>
 
-  <form @submit.prevent="handleSubmit" class="p-4 bg-white shadow-lg rounded-lg border border-gray-200">
+  <form @submit.prevent="handleSubmit" class="shadow-lg rounded-lg border-gray-200">
     <div class="mb-4">
-      <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name:</label>
+      <label for="name" class="block text-white text-sm font-bold mb-2">Name:</label>
       <input
         v-model="newCharacter.name"
         type="text"
         id="name"
+        placeholder="Enter character name"
         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         required
       />
     </div>
 
     <div class="mb-4">
-      <label for="race" class="block text-gray-700 text-sm font-bold mb-2">Race:</label>
+      <label for="race" class="block text-white text-sm font-bold mb-2">Race:</label>
       <select
         v-model="newCharacter.race"
         id="race"
-        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline cursor-pointer"
         required
       >
         <option value="" disabled>Select a race</option>
         <option v-for="race in races" :key="race" :value="race">{{ race }}</option>
       </select>
     </div>
-
     <div class="mb-4">
-      <label for="level" class="block text-gray-700 text-sm font-bold mb-2">Level:</label>
-      <input
-        v-model="newCharacter.level"
-        type="number"
-        id="level"
-        min="1"
-        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-      />
+      <label for="race" class="block text-white text-sm font-bold mb-2">Class:</label>
+      <select
+        v-model="newCharacter.className"
+        id="race"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline cursor-pointer"
+        required
+      >
+        <option value="" disabled>Select a class</option>
+        <option v-for="characterClass in characterClasses" :key="characterClass" :value="characterClass">{{ characterClass }}</option>
+      </select>
     </div>
 
-    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+    <button type="submit" class="bg-emerald-600 hover:bg-emerald-300 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
       Add Character
     </button>
   </form>
